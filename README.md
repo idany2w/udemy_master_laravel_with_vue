@@ -1,3 +1,9 @@
+https://laravel.com/docs/master
+https://laravel.su/docs/8.x/installation#installation-via-composer
+https://ru.vuejs.org/index.html
+https://v3.router.vuejs.org/ru/
+
+
 ```bash
     composer create-project laravel/laravel udemy_master_laravel_with_vue
     composer install
@@ -16,4 +22,10 @@
 
 ```bash
     php artisan route:list
+```
+
+```bash
+    npm install vue-router
+
+    npm install vue-router@3
 ```
