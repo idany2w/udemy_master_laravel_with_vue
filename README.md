@@ -1,7 +1,11 @@
-## Раздел 1: Introduction
+```bash
+    composer create-project laravel/laravel udemy_master_laravel_with_vue
+    composer install
+```
 
-Просмотрел, установил
-
-## Раздел 2: Laravel API & Vue routing and basics
-
-Смотрю
+```bash
+    composer require laravel/ui --dev
+    php artisan ui vue
+    npm install && npm run dev
+    npm run dev
+```
