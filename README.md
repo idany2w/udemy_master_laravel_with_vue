@@ -9,3 +9,11 @@
     npm install && npm run dev
     npm run dev
 ```
+
+```bash
+    php artisan route:list
+```
+
+```bash
+    php artisan route:list
+```
