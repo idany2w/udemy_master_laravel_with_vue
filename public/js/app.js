@@ -5273,18 +5273,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     itemTitle: String,
     itemContent: String,
     price: Number
-  },
-  mounted: function mounted() {
-    console.log(this.itemTitle); // This is bad:
-    // this.itemTitle = 'rgb'
-    // setTimeout(() => {
-    //     this.itemTitle = 'bad'
-    // }, 3500);
   }
 });
 
@@ -5320,6 +5316,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -5328,12 +5333,24 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       bookables: null,
-      loading: false
+      loading: false,
+      colsumns: 3 //this is bad, I condemn
+
     };
   },
-  //   beforeCreate() {
-  //     console.log("beforeCreate");
-  //   },
+  computed: {
+    rows: function rows() {
+      return !this.bookables ? 0 : Math.ceil(this.bookables.length / this.colsumns);
+    }
+  },
+  methods: {
+    bookablesInRow: function bookablesInRow(row) {
+      return this.bookables.slice((row - 1) * this.colsumns, row * this.colsumns);
+    },
+    placeholdersInRow: function placeholdersInRow(row) {
+      return this.colsumns - this.bookablesInRow(row).length;
+    }
+  },
   created: function created() {
     var _this = this;
 
@@ -5342,6 +5359,30 @@ __webpack_require__.r(__webpack_exports__);
       _this.bookables = [{
         title: "The title 1",
         content: "The content 1"
+      }, {
+        title: "The title 2",
+        content: "The content 2"
+      }, {
+        title: "The title 2",
+        content: "The content 2"
+      }, {
+        title: "The title 2",
+        content: "The content 2"
+      }, {
+        title: "The title 2",
+        content: "The content 2"
+      }, {
+        title: "The title 2",
+        content: "The content 2"
+      }, {
+        title: "The title 2",
+        content: "The content 2"
+      }, {
+        title: "The title 2",
+        content: "The content 2"
+      }, {
+        title: "The title 2",
+        content: "The content 2"
       }, {
         title: "The title 2",
         content: "The content 2"
@@ -28179,10 +28220,16 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("h1", [_vm._v(_vm._s(_vm.itemTitle))]),
+  return _c("div", { staticClass: "card" }, [
+    _c("div", { staticClass: "card-body" }, [
+      _c("p", { staticClass: "h5 class-title" }, [
+        _vm._v(_vm._s(_vm.itemTitle)),
+      ]),
+      _vm._v(" "),
+      _c("p", { staticClass: "card-text" }, [_vm._v(_vm._s(_vm.itemContent))]),
+    ]),
     _vm._v(" "),
-    _c("p", [_vm._v(_vm._s(_vm.itemContent))]),
+    _c("h1"),
   ])
 }
 var staticRenderFns = []
@@ -28209,21 +28256,45 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
+    _c("p", [_vm._v("Rows is: " + _vm._s(_vm.rows))]),
+    _vm._v(" "),
     _vm.loading
-      ? _c("div", [_vm._v("\n\t\t\tData is loading...\n\t\t")])
+      ? _c("div", [_vm._v("Data is loading...")])
       : _c(
           "div",
-          _vm._l(_vm.bookables, function (bookable, index) {
-            return _c("bookable-list-item", {
-              key: index,
-              attrs: {
-                "item-title": bookable.title,
-                "item-content": bookable.content,
-                price: 100000,
-              },
-            })
+          _vm._l(_vm.rows, function (row) {
+            return _c(
+              "div",
+              { key: "row" + row, staticClass: "row mb-4" },
+              [
+                _vm._l(_vm.bookablesInRow(row), function (bookable, column) {
+                  return _c(
+                    "div",
+                    { key: "row" + row + column, staticClass: "col" },
+                    [
+                      _c("bookable-list-item", {
+                        attrs: {
+                          "item-title": bookable.title,
+                          "item-content": bookable.content,
+                          price: 100000,
+                        },
+                      }),
+                    ],
+                    1
+                  )
+                }),
+                _vm._v(" "),
+                _vm._l(_vm.placeholdersInRow(row), function (p) {
+                  return _c("div", {
+                    key: "placeholder" + row + p,
+                    staticClass: "col",
+                  })
+                }),
+              ],
+              2
+            )
           }),
-          1
+          0
         ),
   ])
 }

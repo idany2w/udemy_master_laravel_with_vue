@@ -1,7 +1,10 @@
 <template>
-  <div>
-    <h1>{{ itemTitle }}</h1>
-    <p>{{ itemContent }}</p>
+  <div class="card">
+    <div class="card-body">
+      <p class="h5 class-title">{{ itemTitle }}</p>
+      <p class="card-text">{{ itemContent }}</p>
+    </div>
+    <h1></h1>
   </div>
 </template>
 
@@ -11,15 +14,6 @@ export default {
     itemTitle: String,
     itemContent: String,
     price: Number,
-  },
-  mounted() {
-    console.log(this.itemTitle);
-
-    // This is bad:
-        // this.itemTitle = 'rgb'
-        // setTimeout(() => {
-        //     this.itemTitle = 'bad'
-        // }, 3500);
   },
 };
 </script>
