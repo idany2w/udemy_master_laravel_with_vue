@@ -5319,9 +5319,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -5339,9 +5336,6 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    console.log("created");
-    console.log(this.bookable1);
-    console.log(this.bookable2);
     setTimeout(function () {
       _this.bookable1 = {
         title: "The title 1",
@@ -5351,29 +5345,7 @@ __webpack_require__.r(__webpack_exports__);
         title: "The title 2",
         content: "The content 2"
       };
-      _this.bookable3 = {
-        title: "The title 3",
-        content: "The content 3"
-      };
     }, 1000);
-    setTimeout(function () {
-      console.log('1 oops');
-      _this.bookable2 = {
-        title: "1 oops!",
-        content: "1 oops!"
-      };
-      _this.bookable3 = {
-        title: "1 oops!",
-        content: "1 oops!"
-      };
-    }, 2000);
-    setTimeout(function () {
-      console.log('2 oops');
-      _this.bookable3 = {
-        title: "2 oops!",
-        content: "2 oops!"
-      };
-    }, 3000);
   } //   beforeMount() {
   //     console.log("beforeMount");
   //   },
@@ -28237,29 +28209,25 @@ var render = function () {
   return _c(
     "div",
     [
-      _c("bookable-list-item", {
-        attrs: {
-          "item-title": _vm.bookable1.title,
-          "item-content": _vm.bookable1.content,
-          price: 100000,
-        },
-      }),
+      _vm.bookable1
+        ? _c("bookable-list-item", {
+            attrs: {
+              "item-title": _vm.bookable1.title,
+              "item-content": _vm.bookable1.content,
+              price: 100000,
+            },
+          })
+        : _vm._e(),
       _vm._v(" "),
-      _c("bookable-list-item", {
-        attrs: {
-          "item-title": _vm.bookable2.title,
-          "item-content": _vm.bookable2.content,
-          price: 100002,
-        },
-      }),
-      _vm._v(" "),
-      _c("bookable-list-item", {
-        attrs: {
-          "item-title": _vm.bookable3.title,
-          "item-content": _vm.bookable3.content,
-          price: 100003,
-        },
-      }),
+      _vm.bookable2
+        ? _c("bookable-list-item", {
+            attrs: {
+              "item-title": _vm.bookable2.title,
+              "item-content": _vm.bookable2.content,
+              price: 100002,
+            },
+          })
+        : _vm._e(),
     ],
     1
   )
