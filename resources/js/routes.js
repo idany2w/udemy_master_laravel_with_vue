@@ -10,7 +10,7 @@ const routes = [
     },
     {
         path: "/second",
-        component: Bookables,
+        component: BookableListItem,
         name: "second"
     }
 ];
