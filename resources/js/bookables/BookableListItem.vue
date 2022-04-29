@@ -16,7 +16,10 @@ export default {
     console.log(this.itemTitle);
 
     // This is bad:
-    // this.itemTitle = 'rgb'
+        // this.itemTitle = 'rgb'
+        // setTimeout(() => {
+        //     this.itemTitle = 'bad'
+        // }, 3500);
   },
 };
 </script>

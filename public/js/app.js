@@ -5282,6 +5282,9 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     console.log(this.itemTitle); // This is bad:
     // this.itemTitle = 'rgb'
+    // setTimeout(() => {
+    //     this.itemTitle = 'bad'
+    // }, 3500);
   }
 });
 
@@ -5319,11 +5322,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -5331,14 +5329,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      bookable1: {
-        title: "The title 1",
-        content: "The content 1"
-      },
-      bookable2: {
-        title: "The title 2",
-        content: "The content 2"
-      }
+      bookable1: null,
+      bookable2: null
     };
   },
   //   beforeCreate() {
@@ -5351,7 +5343,36 @@ __webpack_require__.r(__webpack_exports__);
     console.log(this.bookable1);
     console.log(this.bookable2);
     setTimeout(function () {
-      _this.bookable1.title += " was created";
+      _this.bookable1 = {
+        title: "The title 1",
+        content: "The content 1"
+      };
+      _this.bookable2 = {
+        title: "The title 2",
+        content: "The content 2"
+      };
+      _this.bookable3 = {
+        title: "The title 3",
+        content: "The content 3"
+      };
+    }, 1000);
+    setTimeout(function () {
+      console.log('1 oops');
+      _this.bookable2 = {
+        title: "1 oops!",
+        content: "1 oops!"
+      };
+      _this.bookable3 = {
+        title: "1 oops!",
+        content: "1 oops!"
+      };
+    }, 2000);
+    setTimeout(function () {
+      console.log('2 oops');
+      _this.bookable3 = {
+        title: "2 oops!",
+        content: "2 oops!"
+      };
     }, 3000);
   } //   beforeMount() {
   //     console.log("beforeMount");
@@ -28228,22 +28249,14 @@ var render = function () {
         attrs: {
           "item-title": _vm.bookable2.title,
           "item-content": _vm.bookable2.content,
-          price: 100001,
-        },
-      }),
-      _vm._v(" "),
-      _c("bookable-list-item", {
-        attrs: {
-          "item-title": "The Title 2",
-          "item-content": "The Content 2",
           price: 100002,
         },
       }),
       _vm._v(" "),
       _c("bookable-list-item", {
         attrs: {
-          "item-title": "The Title 3",
-          "item-content": "The Content 3",
+          "item-title": _vm.bookable3.title,
+          "item-content": _vm.bookable3.content,
           price: 100003,
         },
       }),
