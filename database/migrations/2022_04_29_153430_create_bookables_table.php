@@ -18,7 +18,7 @@ class CreateBookablesTable extends Migration
             $table->timestamps();
 
             $table->string('title');
-            $table->text('text');
+            $table->text('description');
         });
     }
 
