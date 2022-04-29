@@ -5278,6 +5278,10 @@ __webpack_require__.r(__webpack_exports__);
     'itemTitle': String,
     'itemContent': String,
     'price': Number
+  },
+  mounted: function mounted() {
+    console.log(this.itemTitle); // This is bad:
+    // this.itemTitle = 'rgb'
   }
 });
 

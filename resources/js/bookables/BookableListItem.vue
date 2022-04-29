@@ -11,6 +11,12 @@ export default {
         'itemTitle': String,
         'itemContent': String,
         'price': Number,
+    },
+    mounted() {
+        console.log(this.itemTitle)
+
+        // This is bad:
+        // this.itemTitle = 'rgb'
     }
         
 }
