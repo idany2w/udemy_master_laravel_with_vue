@@ -1,8 +1,8 @@
 <template>
   <div class="card w-100">
     <div class="card-body">
-      <p class="h5 class-title">{{ itemTitle }}</p>
-      <p class="card-text">{{ itemDescription }}</p>
+      <p class="h5 class-title">{{ title }}</p>
+      <p class="card-text">{{ description }}</p>
     </div>
     <h1></h1>
   </div>
@@ -11,9 +11,9 @@
 <script>
 export default {
   props: {
-    itemTitle: String,
-    itemDescription: String,
-    price: Number,
+    title: String,
+    description: String,
+    id: Number,
   },
 };
 </script>
