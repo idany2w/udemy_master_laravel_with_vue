@@ -1,6 +1,5 @@
 <template>
   <div>
-    <p>Rows is: {{ rows }}</p>
     <div v-if="loading">Data is loading...</div>
     <div v-else>
       <div class="row mb-4" v-for="row in rows" :key="'row' + row">
@@ -11,7 +10,7 @@
         >
           <bookable-list-item
             :item-title="bookable.title"
-            :item-content="bookable.content"
+            :item-description="bookable.description"
             :price="100000"
           ></bookable-list-item>
         </div>
@@ -78,51 +77,10 @@ export default {
       });
     console.log(p);
 
-    setTimeout(() => {
-      this.bookables = [
-        {
-          title: "The title 1",
-          content: "The content 1",
-        },
-        {
-          title: "The title 2",
-          content: "The content 2",
-        },
-        {
-          title: "The title 2",
-          content: "The content 2",
-        },
-        {
-          title: "The title 2",
-          content: "The content 2",
-        },
-        {
-          title: "The title 2",
-          content: "The content 2",
-        },
-        {
-          title: "The title 2",
-          content: "The content 2",
-        },
-        {
-          title: "The title 2",
-          content: "The content 2",
-        },
-        {
-          title: "The title 2",
-          content: "The content 2",
-        },
-        {
-          title: "The title 2",
-          content: "The content 2",
-        },
-        {
-          title: "The title 2",
-          content: "The content 2",
-        },
-      ];
+    const request = axios.get('/api/bookables').then(response =>{
+      this.bookables = response.data;
       this.loading = false;
-    }, 1000);
+    });
   },
   //   beforeMount() {
   //     console.log("beforeMount");

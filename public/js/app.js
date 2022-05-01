@@ -5279,7 +5279,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     itemTitle: String,
-    itemContent: String,
+    itemDescription: String,
     price: Number
   }
 });
@@ -5298,7 +5298,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _BookableListItem__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./BookableListItem */ "./resources/js/bookables/BookableListItem.vue");
-//
 //
 //
 //
@@ -5369,40 +5368,10 @@ __webpack_require__.r(__webpack_exports__);
       console.log('Error', result);
     });
     console.log(p);
-    setTimeout(function () {
-      _this.bookables = [{
-        title: "The title 1",
-        content: "The content 1"
-      }, {
-        title: "The title 2",
-        content: "The content 2"
-      }, {
-        title: "The title 2",
-        content: "The content 2"
-      }, {
-        title: "The title 2",
-        content: "The content 2"
-      }, {
-        title: "The title 2",
-        content: "The content 2"
-      }, {
-        title: "The title 2",
-        content: "The content 2"
-      }, {
-        title: "The title 2",
-        content: "The content 2"
-      }, {
-        title: "The title 2",
-        content: "The content 2"
-      }, {
-        title: "The title 2",
-        content: "The content 2"
-      }, {
-        title: "The title 2",
-        content: "The content 2"
-      }];
+    var request = axios.get('/api/bookables').then(function (response) {
+      _this.bookables = response.data;
       _this.loading = false;
-    }, 1000);
+    });
   } //   beforeMount() {
   //     console.log("beforeMount");
   //   },
@@ -28240,7 +28209,9 @@ var render = function () {
         _vm._v(_vm._s(_vm.itemTitle)),
       ]),
       _vm._v(" "),
-      _c("p", { staticClass: "card-text" }, [_vm._v(_vm._s(_vm.itemContent))]),
+      _c("p", { staticClass: "card-text" }, [
+        _vm._v(_vm._s(_vm.itemDescription)),
+      ]),
     ]),
     _vm._v(" "),
     _c("h1"),
@@ -28270,8 +28241,6 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("p", [_vm._v("Rows is: " + _vm._s(_vm.rows))]),
-    _vm._v(" "),
     _vm.loading
       ? _c("div", [_vm._v("Data is loading...")])
       : _c(
@@ -28289,7 +28258,7 @@ var render = function () {
                       _c("bookable-list-item", {
                         attrs: {
                           "item-title": bookable.title,
-                          "item-content": bookable.content,
+                          "item-description": bookable.description,
                           price: 100000,
                         },
                       }),
