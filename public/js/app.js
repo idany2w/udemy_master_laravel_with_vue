@@ -5355,6 +5355,20 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     this.loading = true;
+    var p = new Promise(function (resolve, reject) {
+      console.log(resolve);
+      console.log(reject);
+      setTimeout(function () {
+        resolve("Resolved");
+      }, 3000);
+    }).then(function (result) {
+      return 'First then ' + result;
+    }).then(function (result) {
+      console.log('Second then', result);
+    })["catch"](function (result) {
+      console.log('Error', result);
+    });
+    console.log(p);
     setTimeout(function () {
       _this.bookables = [{
         title: "The title 1",

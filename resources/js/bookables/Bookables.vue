@@ -41,12 +41,17 @@ export default {
   },
   computed: {
     rows() {
-      return !this.bookables ? 0 : Math.ceil(this.bookables.length / this.colsumns);
+      return !this.bookables
+        ? 0
+        : Math.ceil(this.bookables.length / this.colsumns);
     },
   },
   methods: {
     bookablesInRow(row) {
-      return this.bookables.slice((row - 1) * this.colsumns, row * this.colsumns);
+      return this.bookables.slice(
+        (row - 1) * this.colsumns,
+        row * this.colsumns
+      );
     },
     placeholdersInRow(row) {
       return this.colsumns - this.bookablesInRow(row).length;
@@ -54,6 +59,25 @@ export default {
   },
   created() {
     this.loading = true;
+
+    const p = new Promise((resolve, reject) => {
+      console.log(resolve);
+      console.log(reject);
+      setTimeout(() => {
+        resolve("Resolved");
+      }, 3000);
+    })
+      .then((result) => {
+        return 'First then ' + result;
+      })
+      .then((result) => {
+        console.log('Second then', result);
+      })
+      .catch((result) => {
+        console.log('Error', result);
+      });
+    console.log(p);
+
     setTimeout(() => {
       this.bookables = [
         {
