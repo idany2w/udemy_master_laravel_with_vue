@@ -1,5 +1,21 @@
 <template>
-  <div class="">xxx</div>
+  <div class="row">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-body">
+          <div v-if="loading">
+            Loading ...
+          </div>
+          <div v-else>
+            <h1 class="h2">{{ bookable.title }}</h1>
+            <hr />
+            <article>{{ bookable.description }}</article>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">available and price</div>
+  </div>
 </template>
 
 <script>
@@ -7,10 +23,15 @@ export default {
   data() {
     return {
       bookable: null,
+      loading: false,
     };
   },
   created() {
-    axios.get(`/api/bookables/${this.$route.params.id}`).then((response) => this.bookable = response.data);
+    this.loading = true;
+    axios.get(`/api/bookables/${this.$route.params.id}`).then((response) => {
+      this.bookable = response.data;
+      this.loading = false;
+    });
   },
 };
 </script>
