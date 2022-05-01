@@ -23,6 +23,6 @@ Route::get('bookables', function (Request $request) {
     return Bookable::all()->toJson();
 });
 
-Route::get('bookables/{id}', function (Request $request, $bookableId) {
-    return Bookable::find($bookableId);
+Route::get('bookables/{id}', function (Request $request, $id) {
+    return Bookable::find($id);
 });
