@@ -10,8 +10,10 @@
         <input
           type="text"
           name="from"
+          v-model="from"
           class="form-control form-control-sm"
           placeholder="Start date"
+          value="Initial"
         />
       </div>
       <div class="form-group col-md-6">
@@ -19,8 +21,10 @@
         <input
           type="text"
           name="to"
+          v-model="to"
           class="form-control form-control-sm"
           placeholder="End date"
+          value="Initial"
         />
       </div>
       <div class="col">
@@ -29,6 +33,18 @@
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+        from: "2022-05-02",
+        to: null
+    };
+  },
+};
+</script>
+
 
 <style scoped>
 label {
