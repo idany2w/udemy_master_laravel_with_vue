@@ -30,7 +30,13 @@
         />
       </div>
       <div class="col">
-        <button class="btn btn-secondary d-block w-100" @click="check">Check</button>
+        <button
+          class="btn btn-secondary d-block w-100"
+          @click="check"
+          :disabled="loading"
+        >
+          Check
+        </button>
       </div>
     </div>
   </div>
@@ -40,13 +46,35 @@
 export default {
   data() {
     return {
-      from: "2022-05-02",
+      from: null,
       to: null,
+      loading: false,
+      status: null,
+      errors: null,
     };
   },
   methods: {
     check() {
-      alert("I wil check something now");
+      this.loading = true;
+      this.errors = null;
+      
+      axios
+        .get(
+          `/api/bookables/${this.$route.params.id}/availability?from=${this.from}&to=${this.to}`
+        )
+        .then((response) => {
+          this.status = response.status;
+        })
+        .catch((error) => {
+          if (422 == error.response.status) {
+            this.errors = error.response.data.errors;
+          }
+
+          this.status = error.response.status;
+        })
+        .then(() => {
+          this.loading = false;
+        });
     },
   },
 };
