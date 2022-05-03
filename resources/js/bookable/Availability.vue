@@ -27,7 +27,9 @@
           class="invalid-feedback"
           v-for="(error, index) in this.errorFor('from')"
           :key="'from' + index"
-        >{{ error }}</div>
+        >
+          {{ error }}
+        </div>
       </div>
       <div class="form-group col-md-6">
         <label for="to">To</label>
@@ -49,7 +51,9 @@
           class="invalid-feedback"
           v-for="(error, index) in this.errorFor('to')"
           :key="'to' + index"
-        >{{ error }}</div>
+        >
+          {{ error }}
+        </div>
       </div>
       <div class="col">
         <button
@@ -66,6 +70,9 @@
 
 <script>
 export default {
+  props: {
+    bookableId: String,
+  },
   data() {
     return {
       from: null,
@@ -82,7 +89,7 @@ export default {
 
       axios
         .get(
-          `/api/bookables/${this.$route.params.id}/availability?from=${this.from}&to=${this.to}`
+          `/api/bookables/${this.bookableId}/availability?from=${this.from}&to=${this.to}`
         )
         .then((response) => {
           this.status = response.status;
