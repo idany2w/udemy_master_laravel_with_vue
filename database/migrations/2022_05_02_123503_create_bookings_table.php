@@ -21,7 +21,7 @@ class CreateBookingsTable extends Migration
             $table->date('to');
 
             $table->unsignedBigInteger('bookable_id')->index();
-        $table->foreign('bookable_id')->references('id')->on('bookables');
+            $table->foreign('bookable_id')->references('id')->on('bookables');
         });
     }
 
