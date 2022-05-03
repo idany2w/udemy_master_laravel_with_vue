@@ -15,7 +15,17 @@
           v-model="from"
           value="Initial"
           @keyup.enter="check"
+          :class="[
+            {
+              'is-invalid': this.errorFor('from'),
+            },
+          ]"
         />
+        <div
+          class="invalid-feedback"
+          v-for="(error, index) in this.errorFor('from')"
+          :key="'from' + index"
+        >{{ error }}</div>
       </div>
       <div class="form-group col-md-6">
         <label for="to">To</label>
@@ -27,7 +37,17 @@
           value="Initial"
           v-model="to"
           @keyup.enter="check"
+          :class="[
+            {
+              'is-invalid': this.errorFor('to'),
+            },
+          ]"
         />
+        <div
+          class="invalid-feedback"
+          v-for="(error, index) in this.errorFor('to')"
+          :key="'to' + index"
+        >{{ error }}</div>
       </div>
       <div class="col">
         <button
@@ -57,7 +77,7 @@ export default {
     check() {
       this.loading = true;
       this.errors = null;
-      
+
       axios
         .get(
           `/api/bookables/${this.$route.params.id}/availability?from=${this.from}&to=${this.to}`
@@ -76,6 +96,20 @@ export default {
           this.loading = false;
         });
     },
+    errorFor(field) {
+      return this.hasErrors && this.errors[field] ? this.errors[field] : null;
+    },
+  },
+  computed: {
+    hasErrors() {
+      return 422 == this.status && this.errors != null;
+    },
+    hasAvailability() {
+      return 200 == this.status;
+    },
+    noAvailability() {
+      return 404 == this.status;
+    },
   },
 };
 </script>
@@ -87,5 +121,10 @@ label {
   text-transform: uppercase;
   color: gray;
   font-weight: bolder;
+}
+
+.is-invalid {
+  transform: rotate(360deg);
+  transition: transform 0.25s;
 }
 </style>
