@@ -12,6 +12,7 @@
         cols="30"
         rows="10"
         class="form-control"
+        v-model="review.content"
       ></textarea>
     </div>
 
@@ -31,10 +32,10 @@ export default {
       },
     };
   },
-  //   methods: {
-  //     onRatingChange(rating) {
-  //       alert(rating);
-  //     },
-  //   },
+  created() {
+    // 1 check in table
+    // 2 fetch a booking by a review key
+    // 3 store the review
+  },
 };
 </script>
