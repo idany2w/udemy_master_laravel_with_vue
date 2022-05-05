@@ -11,10 +11,12 @@
       >
         <div class="row mb-3">
           <div class="col-md-6">John Doe</div>
-          <div class="col-md-6 d-flex justify-content-end">{{ review.rating }}</div>
+          <div class="col-md-6 d-flex justify-content-end">
+            {{ review.rating }}
+          </div>
         </div>
         <div class="row">
-          <div class="col">{{ review.created_at }}</div>
+          <div class="col">{{ review.created_at | fromNow }}</div>
         </div>
         <div class="row">
           <div class="col">{{ review.content }}</div>
