@@ -5485,15 +5485,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     bookableId: String
@@ -51025,73 +51016,55 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "card-body py-4" },
-    [
-      _c(
-        "p",
-        { staticClass: "h6 text-uppercase text-secondary font-wight-bolder" },
-        [_vm._v("ReviewList")]
-      ),
-      _vm._v(" "),
-      _c("star-rating", { attrs: { rating: 4.0 } }),
-      _vm._v(" "),
-      _c("star-rating", { attrs: { rating: 4.4 } }),
-      _vm._v(" "),
-      _c("star-rating", { attrs: { rating: 4.5 } }),
-      _vm._v(" "),
-      _c("star-rating", { attrs: { rating: 4.6 } }),
-      _vm._v(" "),
-      _c("star-rating", { attrs: { rating: 0.9 } }),
-      _vm._v(" "),
-      _c("star-rating", { attrs: { rating: 3.2 } }),
-      _vm._v(" "),
-      _c("star-rating", { attrs: { rating: 3.5 } }),
-      _vm._v(" "),
-      _c("star-rating", { attrs: { rating: 3.7 } }),
-      _vm._v(" "),
-      _vm.loading
-        ? _c("div", [_vm._v("Loading...")])
-        : _c(
-            "div",
-            _vm._l(_vm.reviews, function (review, index) {
-              return _c(
-                "div",
-                { key: index, staticClass: "border-bottom py-3" },
-                [
-                  _c("div", { staticClass: "row mb-3" }, [
-                    _c("div", { staticClass: "col-md-6" }, [
-                      _vm._v("John Doe"),
-                    ]),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "col-md-6 d-flex justify-content-end" },
-                      [_c("star-rating", { attrs: { rating: review.rating } })],
-                      1
-                    ),
-                  ]),
+  return _c("div", { staticClass: "card-body py-4" }, [
+    _c(
+      "p",
+      { staticClass: "h6 text-uppercase text-secondary font-wight-bolder" },
+      [_vm._v("ReviewList")]
+    ),
+    _vm._v(" "),
+    _vm.loading
+      ? _c("div", [_vm._v("Loading...")])
+      : _c(
+          "div",
+          _vm._l(_vm.reviews, function (review, index) {
+            return _c(
+              "div",
+              { key: index, staticClass: "border-bottom py-3" },
+              [
+                _c("div", { staticClass: "row mb-3" }, [
+                  _c("div", { staticClass: "col-md-6" }, [_vm._v("John Doe")]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "row" }, [
-                    _c("div", { staticClass: "col" }, [
-                      _vm._v(_vm._s(_vm._f("fromNow")(review.created_at))),
-                    ]),
+                  _c(
+                    "div",
+                    { staticClass: "col-md-6 d-flex justify-content-end" },
+                    [
+                      _c("star-rating", {
+                        staticClass: "fa-lg",
+                        attrs: { rating: review.rating },
+                      }),
+                    ],
+                    1
+                  ),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col" }, [
+                    _vm._v(_vm._s(_vm._f("fromNow")(review.created_at))),
                   ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "row" }, [
-                    _c("div", { staticClass: "col" }, [
-                      _vm._v(_vm._s(review.content)),
-                    ]),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col" }, [
+                    _vm._v(_vm._s(review.content)),
                   ]),
-                ]
-              )
-            }),
-            0
-          ),
-    ],
-    1
-  )
+                ]),
+              ]
+            )
+          }),
+          0
+        ),
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true

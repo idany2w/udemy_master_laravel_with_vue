@@ -2,15 +2,6 @@
   <div class="card-body py-4">
     <p class="h6 text-uppercase text-secondary font-wight-bolder">ReviewList</p>
 
-    <star-rating :rating="4.0"></star-rating>
-    <star-rating :rating="4.4"></star-rating>
-    <star-rating :rating="4.5"></star-rating>
-    <star-rating :rating="4.6"></star-rating>
-    <star-rating :rating="0.9"></star-rating>
-    <star-rating :rating="3.2"></star-rating>
-    <star-rating :rating="3.5"></star-rating>
-    <star-rating :rating="3.7"></star-rating>
-
     <div v-if="loading">Loading...</div>
     <div v-else>
       <div
@@ -21,7 +12,7 @@
         <div class="row mb-3">
           <div class="col-md-6">John Doe</div>
           <div class="col-md-6 d-flex justify-content-end">
-            <star-rating :rating="review.rating"></star-rating>
+            <star-rating :rating="review.rating" class="fa-lg"></star-rating>
           </div>
         </div>
         <div class="row">
