@@ -21,13 +21,15 @@ export default {
   },
   computed: {
     halfStar() {
-      return 1;
+      const fraction = Math.floor((this.rating - Math.floor(this.rating)) * 100);
+
+      return (fraction > 0 && fraction < 50);
     },
     fullStars() {
-      return 3;
+      return Math.round(this.rating);
     },
     emptySrats() {
-      return 1;
+      return 5 - Math.ceil(this.rating);
     },
   },
 };
