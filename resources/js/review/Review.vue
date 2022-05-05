@@ -2,11 +2,7 @@
   <div class="">
     <div class="form-group mb-3">
       <label clas="text-muted">Select the star rating (from 1 to 5)</label>
-      <star-rating
-        :rating="review.rating"
-        class="fa-3x"
-        v-on:rating:changed="review.rating = $event"
-      ></star-rating>
+      <star-rating class="fa-3x" v-model="review.rating"></star-rating>
     </div>
 
     <div class="form-group mb-3">
@@ -35,10 +31,10 @@ export default {
       },
     };
   },
-//   methods: {
-//     onRatingChange(rating) {
-//       alert(rating);
-//     },
-//   },
+  //   methods: {
+  //     onRatingChange(rating) {
+  //       alert(rating);
+  //     },
+  //   },
 };
 </script>

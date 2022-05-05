@@ -12,7 +12,7 @@
         <div class="row mb-3">
           <div class="col-md-6">John Doe</div>
           <div class="col-md-6 d-flex justify-content-end">
-            <star-rating :rating="review.rating" class="fa-lg"></star-rating>
+            <star-rating :value="review.rating" class="fa-lg"></star-rating>
           </div>
         </div>
         <div class="row">
