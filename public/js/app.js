@@ -5645,7 +5645,29 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({});
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      review: {
+        rating: 5,
+        content: null
+      }
+    };
+  } //   methods: {
+  //     onRatingChange(rating) {
+  //       alert(rating);
+  //     },
+  //   },
+
+});
 
 /***/ }),
 
@@ -5660,6 +5682,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+//
+//
 //
 //
 //
@@ -51322,7 +51346,15 @@ var render = function () {
           _vm._v("Select the star rating (from 1 to 5)"),
         ]),
         _vm._v(" "),
-        _c("star-rating", { staticClass: "fa-3x", attrs: { rating: 5 } }),
+        _c("star-rating", {
+          staticClass: "fa-3x",
+          attrs: { rating: 5 },
+          on: {
+            "rating:changed": function ($event) {
+              _vm.review.rating = $event
+            },
+          },
+        }),
       ],
       1
     ),
@@ -51386,7 +51418,15 @@ var render = function () {
     { staticClass: "d-flex" },
     [
       _vm._l(_vm.fullStars, function (star) {
-        return _c("i", { key: "fullstars" + star, staticClass: "fas fa-star" })
+        return _c("i", {
+          key: "fullstars" + star,
+          staticClass: "fas fa-star",
+          on: {
+            click: function ($event) {
+              return _vm.$emit("rating:changed", star)
+            },
+          },
+        })
       }),
       _vm._v(" "),
       _vm.halfStar
@@ -51394,7 +51434,15 @@ var render = function () {
         : _vm._e(),
       _vm._v(" "),
       _vm._l(_vm.emptySrats, function (star) {
-        return _c("i", { key: "emptySrats" + star, staticClass: "far fa-star" })
+        return _c("i", {
+          key: "emptySrats" + star,
+          staticClass: "far fa-star",
+          on: {
+            click: function ($event) {
+              return _vm.$emit("rating:changed", _vm.fullStars + star)
+            },
+          },
+        })
       }),
     ],
     2

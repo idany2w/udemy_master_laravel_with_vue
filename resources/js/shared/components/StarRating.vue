@@ -4,12 +4,14 @@
       class="fas fa-star"
       v-for="star in fullStars"
       :key="'fullstars' + star"
+      @click="$emit('rating:changed', star)"
     ></i>
     <i class="fas fa-star-half-alt" v-if="halfStar"></i>
     <i
       class="far fa-star"
       v-for="star in emptySrats"
       :key="'emptySrats' + star"
+      @click="$emit('rating:changed', fullStars + star)"
     ></i>
   </div>
 </template>
@@ -21,9 +23,11 @@ export default {
   },
   computed: {
     halfStar() {
-      const fraction = Math.floor((this.rating - Math.floor(this.rating)) * 100);
+      const fraction = Math.floor(
+        (this.rating - Math.floor(this.rating)) * 100
+      );
 
-      return (fraction > 0 && fraction < 50);
+      return fraction > 0 && fraction < 50;
     },
     fullStars() {
       return Math.round(this.rating);
