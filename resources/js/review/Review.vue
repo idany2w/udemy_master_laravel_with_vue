@@ -48,15 +48,8 @@
                   },
                 ]"
               ></textarea>
-              <div
-                class="invalid-feedback"
-                v-for="(error, index) in errorFor('content')"
-                :key="'to' + index"
-              >
-                {{ error }}
-              </div>
+              <v-errors :errors="errorFor('content')"></v-errors>
             </div>
-
             <div class="form-group">
               <button
                 class="btn btn-lg btn-primary w-100"
