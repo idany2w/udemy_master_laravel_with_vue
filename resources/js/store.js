@@ -1,12 +1,12 @@
 export default {
     state: {
-        lastSearch:{
+        lastSearch: {
             from: null,
             to: null,
         }
     },
-    mutations:{
-        setLastSearch(state, payload){
+    mutations: {
+        setLastSearch(state, payload) {
             state.lastSearch = payload
         }
 
