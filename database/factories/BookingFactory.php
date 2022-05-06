@@ -19,7 +19,7 @@ class BookingFactory extends Factory
 
         return [
             'from' => $from,
-            'to' => $to,
+            'to' => $to
         ];
     }
 }
