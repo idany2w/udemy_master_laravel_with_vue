@@ -28,4 +28,6 @@ https://v3.router.vuejs.org/ru/
     npm install vue-router
 
     npm install vue-router@3
+
+    npm install vuex@3.1.2 --save-dev
 ```

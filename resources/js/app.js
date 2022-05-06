@@ -2,6 +2,7 @@ require('./bootstrap');
 
 import Vue from "vue";
 import VueRouter from "vue-router";
+import Vuex from "vuex";
 import router from "./routes";
 import Index from "./Index";
 import moment from "moment";
@@ -13,6 +14,7 @@ import ValidationErrors from "./shared/components/ValidationErrors.vue";
 window.Vue = require('vue').default;
 
 Vue.use(VueRouter);
+Vue.use(Vuex);
 
 Vue.filter("fromNow", value => moment(value).fromNow());
 
