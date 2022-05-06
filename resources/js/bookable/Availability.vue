@@ -19,13 +19,13 @@
           @keyup.enter="check"
           :class="[
             {
-              'is-invalid': this.errorFor('from'),
+              'is-invalid': errorFor('from'),
             },
           ]"
         />
         <div
           class="invalid-feedback"
-          v-for="(error, index) in this.errorFor('from')"
+          v-for="(error, index) in errorFor('from')"
           :key="'from' + index"
         >
           {{ error }}
