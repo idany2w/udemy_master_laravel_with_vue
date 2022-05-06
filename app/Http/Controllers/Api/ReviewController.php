@@ -10,6 +10,6 @@ class ReviewController extends Controller
 {
     public function show($id)
     {
-        return new ReviewResource(Review::findOrFali($id));
+        return new ReviewResource(Review::findOrFail($id));
     }
 }
