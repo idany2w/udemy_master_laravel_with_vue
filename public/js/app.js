@@ -51288,7 +51288,7 @@ var render = function () {
                     [
                       _c("star-rating", {
                         staticClass: "fa-lg",
-                        attrs: { value: review.rating },
+                        attrs: { value: +review.rating },
                       }),
                     ],
                     1
