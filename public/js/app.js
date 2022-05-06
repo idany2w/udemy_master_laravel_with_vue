@@ -5266,6 +5266,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _shared_utils_response__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./../shared/utils/response */ "./resources/js/shared/utils/response.js");
 //
 //
 //
@@ -5336,6 +5337,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     bookableId: String
@@ -5358,7 +5360,7 @@ __webpack_require__.r(__webpack_exports__);
       axios.get("/api/bookables/".concat(this.bookableId, "/availability?from=").concat(this.from, "&to=").concat(this.to)).then(function (response) {
         _this.status = response.status;
       })["catch"](function (error) {
-        if (422 == error.response.status) {
+        if ((0,_shared_utils_response__WEBPACK_IMPORTED_MODULE_0__.is422)(error)) {
           _this.errors = error.response.data.errors;
         }
 
@@ -5702,7 +5704,8 @@ __webpack_require__.r(__webpack_exports__);
       existingReview: null,
       loading: false,
       booking: null,
-      error: false
+      error: false,
+      errors: null
     };
   },
   created: function created() {
@@ -5749,10 +5752,20 @@ __webpack_require__.r(__webpack_exports__);
     submit: function submit() {
       var _this2 = this;
 
+      this.errors = null;
       this.loading = true;
       axios.post("/api/reviews", this.review).then(function (response) {
         console.log(response);
       })["catch"](function (err) {
+        if ((0,_shared_utils_response__WEBPACK_IMPORTED_MODULE_0__.is422)(err)) {
+          var errors = err.response.data.errors;
+
+          if (errors["content"] && 1 === _.size(errors)) {
+            _this2.errors = errors;
+            return;
+          }
+        }
+
         _this2.error = true;
       }).then(function () {
         _this2.loading = false;
@@ -5962,10 +5975,18 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_3__["default"]({
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "is404": () => (/* binding */ is404)
+/* harmony export */   "is404": () => (/* binding */ is404),
+/* harmony export */   "is422": () => (/* binding */ is422)
 /* harmony export */ });
 var is404 = function is404(err) {
-  return err.response && err.response.status && 404 === err.response.status;
+  return isErrorWithResponseStatus(err) && 404 === err.response.status;
+};
+var is422 = function is422(err) {
+  return isErrorWithResponseStatus(err) && 422 === err.response.status;
+};
+
+var isErrorWithResponseStatus = function isErrorWithResponseStatus(err) {
+  return err.response && err.response.status;
 };
 
 /***/ }),
