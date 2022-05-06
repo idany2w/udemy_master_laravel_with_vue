@@ -86,34 +86,26 @@ export default {
       sending: false,
     };
   },
-  created() {
+  async created() {
     this.review.id = this.$route.params.id;
     this.loading = true;
-    // 1. If review already exists (in reviews table by id)
-    axios
-      .get(`/api/reviews/${this.review.id}`)
-      .then((response) => {
-        this.existingReview = response.data.data;
-      })
-      .catch((err) => {
-        if (is404(err)) {
-          // 2. Fetch a booking by a review key
-          return axios
-            .get(`/api/booking-by-review/${this.review.id}`)
-            .then((response) => {
-              this.booking = response.data.data;
-            })
-            .catch((err) => {
-              this.error = !is404(err);
-            });
-        }
 
+    try {
+      this.existingReview = (await axios.get(`/api/reviews/${this.review.id}`)).data.data;
+    } catch (error) {
+      if (is404(error)) {
+        try {
+          this.booking = (
+            await axios.get(`/api/booking-by-review/${this.review.id}`)
+          ).data.data;
+        } catch (error) {
+          this.error = !is404(err);
+        }
+      } else {
         this.error = true;
-      })
-      .then(() => {
-        this.loading = false;
-      });
-    // 3. Store the review
+      }
+    }
+    this.loading = false;
   },
   computed: {
     alreadyReviewed() {
