@@ -38,5 +38,5 @@ Route::get('booking-by-review/{review_key}', BookingByReviewController::class)
 
 Route::apiResource('reviews', ReviewController::class)
     ->except([])
-    ->only(['show']);
+    ->only(['show', 'store']);
 

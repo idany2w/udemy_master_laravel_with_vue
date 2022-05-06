@@ -14,6 +14,7 @@ class ReviewController extends Controller
     {
         return new ReviewResource(Review::findOrFail($id));
     }
+    
     public function store(Request $request)
     {
         $data = $request->validate([

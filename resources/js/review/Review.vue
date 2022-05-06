@@ -32,16 +32,12 @@
           </div>
           <div v-else>
             <div class="form-group mb-3">
-              <label clas="text-muted"
-                >Select the star rating (from 1 to 5)</label
-              >
+              <label clas="text-muted">Select the star rating (from 1 to 5)</label>
               <star-rating class="fa-3x" v-model="review.rating"></star-rating>
             </div>
 
             <div class="form-group mb-3">
-              <label for="content" class="text-muted"
-                >Describe your xp with
-              </label>
+              <label for="content" class="text-muted">Describe your xp with </label>
               <textarea
                 name="content"
                 cols="30"
@@ -52,7 +48,13 @@
             </div>
 
             <div class="form-group">
-              <button class="btn btn-lg btn-primary w-100">Submit</button>
+              <button
+                class="btn btn-lg btn-primary w-100"
+                @click.prevent="submit"
+                :disabled="loading"
+              >
+                Submit
+              </button>
             </div>
           </div>
         </div>
@@ -67,6 +69,7 @@ export default {
   data() {
     return {
       review: {
+        id: null,
         rating: 5,
         content: null,
       },
@@ -77,10 +80,11 @@ export default {
     };
   },
   created() {
+    this.review.id = this.$route.params.id;
     this.loading = true;
     // 1. If review already exists (in reviews table by id)
     axios
-      .get(`/api/reviews/${this.$route.params.id}`)
+      .get(`/api/reviews/${this.review.id}`)
       .then((response) => {
         this.existingReview = response.data.data;
       })
@@ -88,7 +92,7 @@ export default {
         if (is404(err)) {
           // 2. Fetch a booking by a review key
           return axios
-            .get(`/api/booking-by-review/${this.$route.params.id}`)
+            .get(`/api/booking-by-review/${this.review.id}`)
             .then((response) => {
               this.booking = response.data.data;
             })
@@ -119,6 +123,22 @@ export default {
     },
     twoColumns() {
       return this.loading || !this.alreadyReviewed;
+    },
+  },
+  methods: {
+    submit() {
+      this.loading = true;
+      axios
+        .post(`/api/reviews`, this.review)
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((err) => {
+          this.error = true;
+        })
+        .then(() => {
+          this.loading = false;
+        });
     },
   },
 };
