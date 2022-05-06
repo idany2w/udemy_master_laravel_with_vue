@@ -40,6 +40,7 @@ export default {
       },
       existingReview: null,
       loading: false,
+      booking: null,
     };
   },
   created() {
@@ -48,7 +49,19 @@ export default {
     axios
       .get(`/api/reviews/${this.$route.params.id}`)
       .then((response) => (this.existingReview = response.data.data))
-      .catch((error) => {})
+      .catch((error) => {
+        if (
+          error.response &&
+          error.response.status &&
+          404 == error.response.status
+        ) {
+          return axios
+            .get(`api/booking-by-review/${this.$route.params.id}`)
+            .then((response) => {
+              this.booking = response.data.data;
+            });
+        }
+      })
       .then(() => {
         this.loading = false;
       });
