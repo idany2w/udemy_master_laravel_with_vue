@@ -1,7 +1,9 @@
 <template>
   <div>
     <nav class="navbar bg-white border-bottom navbar-light">
-      <router-link class="navbar-brand mr-auto btn nav-button" :to="{ name: 'home' }"
+      <router-link
+        class="navbar-brand mr-auto btn nav-button"
+        :to="{ name: 'home' }"
         >LaravelBnb</router-link
       >
       <!-- <router-link class="btn nav-button" :to="{ name: 'second' }">Second</router-link> -->
@@ -12,3 +14,23 @@
     </div>
   </div>
 </template>
+
+<script>
+import { mapState } from "vuex";
+
+export default {
+  data() {
+    return {
+      lastSearch: this.$store.state.lastSearch,
+    };
+  },
+  computed: {
+    ...mapState({
+      lastSearchComputed: "lastSearch",
+    }),
+    somthingElse(){
+      return 'foo'
+    }
+  },
+};
+</script>
