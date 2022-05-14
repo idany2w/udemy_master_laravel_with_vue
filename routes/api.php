@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\BookableAvailabilityController;
 use App\Http\Controllers\Api\BookableReviewController;
 use App\Http\Controllers\Api\BookableController;
+use App\Http\Controllers\Api\BookablePriceController;
 use App\Http\Controllers\Api\BookingByReviewController;
 use App\Http\Controllers\Api\ReviewController;
 use Illuminate\Http\Request;
@@ -35,6 +36,9 @@ Route::get('bookables/{bookable}/reviews', BookableReviewController::class)
 
 Route::get('booking-by-review/{review_key}', BookingByReviewController::class)
     ->name('booking.by-review.show');
+
+Route::get('bookables/{bookable}/price', BookablePriceController::class)
+    ->name('bookabless.price.show');
 
 Route::apiResource('reviews', ReviewController::class)
     ->except([])
