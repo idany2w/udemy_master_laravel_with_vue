@@ -51,7 +51,8 @@
           @click="check"
           :disabled="loading"
         >
-          Check
+          <span v-if="!loading">Check!</span>
+          <span v-if="loading"><i class="fas fa-circle-notch fa-spin"></i> Checking...</span>
         </button>
       </div>
     </div>
