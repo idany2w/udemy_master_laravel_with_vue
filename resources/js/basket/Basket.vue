@@ -3,42 +3,82 @@
     <div class="row">
       <div class="col-md-8">
         <div class="row g-3">
-            <div class="col-md-6">
-                <label for="first_name">First name</label>
-                <input type="text" class="form-control bg-white" name="first_name">
-            </div>
-            <div class="col-md-6">
-                <label for="last_name">Last name</label>
-                <input type="text" class="form-control bg-white" name="last_name">
-            </div>
-            <div class="col-md-12">
-                <label for="email">Email</label>
-                <input type="text" class="form-control bg-white" name="email">
-            </div>
-            <div class="col-md-6">
-                <label for="street">Street</label>
-                <input type="text" class="form-control bg-white" name="street">
-            </div>
-            <div class="col-md-6">
-                <label for="city">City</label>
-                <input type="text" class="form-control bg-white" name="city">
-            </div>
-            <div class="col-md-6">
-                <label for="Country">Country</label>
-                <input type="text" class="form-control bg-white" name="country">
-            </div>
-            <div class="col-md-4">
-                <label for="state">State</label>
-                <input type="text" class="form-control bg-white" name="state">
-            </div>
-            <div class="col-md-2">
-                <label for="zip">Zip</label>
-                <input type="text" class="form-control bg-white" name="zip">
-            </div>
-            <div class="col-12"><hr></div>
-            <div class="col-12">
-                <button class="btn btn-secondary d-block w-100">Boock now!</button>
-            </div>
+          <div class="col-md-6">
+            <label for="first_name">First name</label>
+            <input
+              type="text"
+              class="form-control bg-white"
+              name="first_name"
+              v-model="customer.first_name"
+            />
+          </div>
+          <div class="col-md-6">
+            <label for="last_name">Last name</label>
+            <input
+              type="text"
+              class="form-control bg-white"
+              name="last_name"
+              v-model="customer.last_name"
+            />
+          </div>
+          <div class="col-md-12">
+            <label for="email">Email</label>
+            <input
+              type="text"
+              class="form-control bg-white"
+              name="email"
+              v-model="customer.email"
+            />
+          </div>
+          <div class="col-md-6">
+            <label for="street">Street</label>
+            <input
+              type="text"
+              class="form-control bg-white"
+              name="street"
+              v-model="customer.street"
+            />
+          </div>
+          <div class="col-md-6">
+            <label for="city">City</label>
+            <input
+              type="text"
+              class="form-control bg-white"
+              name="city"
+              v-model="customer.city"
+            />
+          </div>
+          <div class="col-md-6">
+            <label for="Country">Country</label>
+            <input
+              type="text"
+              class="form-control bg-white"
+              name="country"
+              v-model="customer.country"
+            />
+          </div>
+          <div class="col-md-4">
+            <label for="state">State</label>
+            <input
+              type="text"
+              class="form-control bg-white"
+              name="state"
+              v-model="customer.state"
+            />
+          </div>
+          <div class="col-md-2">
+            <label for="zip">Zip</label>
+            <input
+              type="text"
+              class="form-control bg-white"
+              name="zip"
+              v-model="customer.zip"
+            />
+          </div>
+          <div class="col-12"><hr /></div>
+          <div class="col-12">
+            <button class="btn btn-secondary d-block w-100">Boock now!</button>
+          </div>
         </div>
       </div>
 
@@ -87,6 +127,20 @@
 <script>
 import { mapGetters, mapState } from "vuex";
 export default {
+  data() {
+    return {
+      customer: {
+        first_name: null,
+        last_name: null,
+        email: null,
+        street: null,
+        city: null,
+        country: null,
+        state: null,
+        zip: null,
+      },
+    };
+  },
   computed: {
     ...mapGetters(["itemsInBasket"]),
     ...mapState({
