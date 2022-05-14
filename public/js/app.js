@@ -5389,6 +5389,46 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   computed: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapGetters)(["itemsInBasket"])), (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapState)({
@@ -53117,7 +53157,7 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c("div", {}, [
     _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-8" }, [_vm._v("Checkout form")]),
+      _vm._m(0),
       _vm._v(" "),
       _c(
         "div",
@@ -53222,7 +53262,96 @@ var render = function () {
     ]),
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-8" }, [
+      _c("div", { staticClass: "row g-3" }, [
+        _c("div", { staticClass: "col-md-6" }, [
+          _c("label", { attrs: { for: "first_name" } }, [_vm._v("First name")]),
+          _vm._v(" "),
+          _c("input", {
+            staticClass: "form-control bg-white",
+            attrs: { type: "text", name: "first_name" },
+          }),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-6" }, [
+          _c("label", { attrs: { for: "last_name" } }, [_vm._v("Last name")]),
+          _vm._v(" "),
+          _c("input", {
+            staticClass: "form-control bg-white",
+            attrs: { type: "text", name: "last_name" },
+          }),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-12" }, [
+          _c("label", { attrs: { for: "email" } }, [_vm._v("Email")]),
+          _vm._v(" "),
+          _c("input", {
+            staticClass: "form-control bg-white",
+            attrs: { type: "text", name: "email" },
+          }),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-6" }, [
+          _c("label", { attrs: { for: "street" } }, [_vm._v("Street")]),
+          _vm._v(" "),
+          _c("input", {
+            staticClass: "form-control bg-white",
+            attrs: { type: "text", name: "street" },
+          }),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-6" }, [
+          _c("label", { attrs: { for: "city" } }, [_vm._v("City")]),
+          _vm._v(" "),
+          _c("input", {
+            staticClass: "form-control bg-white",
+            attrs: { type: "text", name: "city" },
+          }),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-6" }, [
+          _c("label", { attrs: { for: "Country" } }, [_vm._v("Country")]),
+          _vm._v(" "),
+          _c("input", {
+            staticClass: "form-control bg-white",
+            attrs: { type: "text", name: "country" },
+          }),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-4" }, [
+          _c("label", { attrs: { for: "state" } }, [_vm._v("State")]),
+          _vm._v(" "),
+          _c("input", {
+            staticClass: "form-control bg-white",
+            attrs: { type: "text", name: "state" },
+          }),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-2" }, [
+          _c("label", { attrs: { for: "zip" } }, [_vm._v("Zip")]),
+          _vm._v(" "),
+          _c("input", {
+            staticClass: "form-control bg-white",
+            attrs: { type: "text", name: "zip" },
+          }),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-12" }, [_c("hr")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-12" }, [
+          _c("button", { staticClass: "btn btn-secondary d-block w-100" }, [
+            _vm._v("Boock now!"),
+          ]),
+        ]),
+      ]),
+    ])
+  },
+]
 render._withStripped = true
 
 

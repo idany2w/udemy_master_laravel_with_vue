@@ -1,7 +1,47 @@
 <template>
   <div class="">
     <div class="row">
-      <div class="col-md-8">Checkout form</div>
+      <div class="col-md-8">
+        <div class="row g-3">
+            <div class="col-md-6">
+                <label for="first_name">First name</label>
+                <input type="text" class="form-control bg-white" name="first_name">
+            </div>
+            <div class="col-md-6">
+                <label for="last_name">Last name</label>
+                <input type="text" class="form-control bg-white" name="last_name">
+            </div>
+            <div class="col-md-12">
+                <label for="email">Email</label>
+                <input type="text" class="form-control bg-white" name="email">
+            </div>
+            <div class="col-md-6">
+                <label for="street">Street</label>
+                <input type="text" class="form-control bg-white" name="street">
+            </div>
+            <div class="col-md-6">
+                <label for="city">City</label>
+                <input type="text" class="form-control bg-white" name="city">
+            </div>
+            <div class="col-md-6">
+                <label for="Country">Country</label>
+                <input type="text" class="form-control bg-white" name="country">
+            </div>
+            <div class="col-md-4">
+                <label for="state">State</label>
+                <input type="text" class="form-control bg-white" name="state">
+            </div>
+            <div class="col-md-2">
+                <label for="zip">Zip</label>
+                <input type="text" class="form-control bg-white" name="zip">
+            </div>
+            <div class="col-12"><hr></div>
+            <div class="col-12">
+                <button class="btn btn-secondary d-block w-100">Boock now!</button>
+            </div>
+        </div>
+      </div>
+
       <div class="col-md-4">
         <div class="d-flex justify-content-between align-items-center">
           <p class="h6 text-uppercase text-secondary fw-bold">Your Cart</p>
