@@ -31,5 +31,8 @@ export default {
                 context.commit('setLastSearch', JSON.parse(lastSearch))
             }
         }
+    },
+    getters:{
+        itemsInBakset: (state) => state.basket.items.length
     }
 };

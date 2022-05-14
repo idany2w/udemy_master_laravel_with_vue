@@ -6,7 +6,11 @@
         :to="{ name: 'home' }"
         >LaravelBnb</router-link
       >
-      <!-- <router-link class="btn nav-button" :to="{ name: 'second' }">Second</router-link> -->
+
+      <router-link class="btn nav-button" :to="{ name: 'home' }">
+        Basket
+        <span v-if="itemsInBakset" class="badge bg-secondary">{{ itemsInBakset }}</span>
+      </router-link>
     </nav>
 
     <div class="container mt-4 mb-4 pr-4 pl-4">
@@ -16,7 +20,7 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapGetters, mapState } from "vuex";
 
 export default {
   data() {
@@ -28,9 +32,12 @@ export default {
     ...mapState({
       lastSearchComputed: "lastSearch",
     }),
-    somthingElse(){
-      return 'foo'
-    }
+    ...mapGetters({
+      itemsInBakset: "itemsInBakset",
+    }),
+    somthingElse() {
+      return "foo";
+    },
   },
 };
 </script>

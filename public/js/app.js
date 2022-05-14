@@ -5301,6 +5301,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
@@ -5308,11 +5312,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       lastSearch: this.$store.state.lastSearch
     };
   },
-  computed: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapState)({
+  computed: _objectSpread(_objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapState)({
     lastSearchComputed: "lastSearch"
+  })), (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapGetters)({
+    itemsInBakset: "itemsInBakset"
   })), {}, {
     somthingElse: function somthingElse() {
-      return 'foo';
+      return "foo";
     }
   })
 });
@@ -6390,6 +6396,11 @@ __webpack_require__.r(__webpack_exports__);
       if (lastSearch) {
         context.commit('setLastSearch', JSON.parse(lastSearch));
       }
+    }
+  },
+  getters: {
+    itemsInBakset: function itemsInBakset(state) {
+      return state.basket.items.length;
     }
   }
 });
@@ -52701,6 +52712,19 @@ var render = function () {
             attrs: { to: { name: "home" } },
           },
           [_vm._v("LaravelBnb")]
+        ),
+        _vm._v(" "),
+        _c(
+          "router-link",
+          { staticClass: "btn nav-button", attrs: { to: { name: "home" } } },
+          [
+            _vm._v("\n      Basket\n      "),
+            _vm.itemsInBakset
+              ? _c("span", { staticClass: "badge bg-secondary" }, [
+                  _vm._v(_vm._s(_vm.itemsInBakset)),
+                ])
+              : _vm._e(),
+          ]
         ),
       ],
       1
