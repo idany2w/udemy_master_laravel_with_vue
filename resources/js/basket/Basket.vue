@@ -1,6 +1,9 @@
 <template>
   <div class="">
-    <div class="row">
+    <success v-if="success">
+      Congratlations on your pourchase!
+    </success>
+    <div class="row" v-else>
       <div class="col-md-8" v-if="itemsInBasket">
         <div class="row g-3">
           <div class="col-md-6">
@@ -191,6 +194,7 @@ export default {
   data() {
     return {
       loading: false,
+      bookingAttempted: false,
       customer: {
         first_name: null,
         last_name: null,
@@ -208,10 +212,14 @@ export default {
     ...mapState({
       basket: (state) => state.basket.items,
     }),
+    success() {
+      return !this.loading && 0 == this.itemsInBasket && this.bookingAttempted;
+    },
   },
   methods: {
     async book() {
       this.loading = true;
+      this.bookingAttempted = null;
       this.errors = null;
 
       try {
@@ -228,6 +236,7 @@ export default {
         this.errors = error.response && error.response.data.errors;
       }
       this.loading = false;
+      this.bookingAttempted = true;
     },
   },
 };
