@@ -1,6 +1,10 @@
 <template>
   <div class="">
-    <div class="invalid-feedback" v-for="(error, index) in errors" :key="key(index)">
+    <div
+      class="invalid-feedback"
+      v-for="(error, index) in errors"
+      :key="key(index)"
+    >
       {{ error }}
     </div>
   </div>

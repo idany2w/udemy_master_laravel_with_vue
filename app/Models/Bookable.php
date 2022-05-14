@@ -24,16 +24,16 @@ class Bookable extends Model
     {
         return 0 === $this->bookings()->betweenDates($from, $to)->count();
     }
-    
+
     public function priceFor($from, $to): array
     {
-        $days = (new Carbon($from))->diffInDays(new Carbon($to)) + 1; 
+        $days = (new Carbon($from))->diffInDays(new Carbon($to)) + 1;
         $price = $days * $this->price;
-        
+
         return [
             'total' => $price,
             'breakdown' => [
-                $this->price -> $days
+                $this->price => $days
             ]
         ];
     }
