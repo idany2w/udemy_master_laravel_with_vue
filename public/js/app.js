@@ -6716,6 +6716,15 @@ vue__WEBPACK_IMPORTED_MODULE_11__["default"].component("fatal-error", _shared_co
 vue__WEBPACK_IMPORTED_MODULE_11__["default"].component("success", _shared_components_Success__WEBPACK_IMPORTED_MODULE_7__["default"]);
 vue__WEBPACK_IMPORTED_MODULE_11__["default"].component("v-errors", _shared_components_ValidationErrors_vue__WEBPACK_IMPORTED_MODULE_8__["default"]);
 var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store(_store__WEBPACK_IMPORTED_MODULE_9__["default"]);
+window.axios.interceptors.response.use(function (response) {
+  return response;
+}, function (error) {
+  if (401 == error.response.status) {
+    store.dispatch('logout');
+  }
+
+  return Promise.reject(error);
+});
 var app = new vue__WEBPACK_IMPORTED_MODULE_11__["default"]({
   el: '#app',
   router: _routes__WEBPACK_IMPORTED_MODULE_2__["default"],
@@ -7021,7 +7030,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 10:
                 _context.prev = 10;
                 _context.t0 = _context["catch"](2);
-                dispatch("logout");
+
+                if (401 === _context.t0.response.status) {
+                  dispatch("logout");
+                }
 
               case 13:
               case "end":
