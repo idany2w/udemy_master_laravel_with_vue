@@ -1,7 +1,7 @@
 <template>
   <div class="">
     <div class="row">
-      <div class="col-md-8">
+      <div class="col-md-8" v-if="itemsInBasket">
         <div class="row g-3">
           <div class="col-md-6">
             <label for="first_name">First name</label>
@@ -86,6 +86,11 @@
           </div>
         </div>
       </div>
+      <div class="col-md-8" v-else>
+        <div class="container-fluid bg-secondary bg-gradient py-5 text-center">
+          <p class="display-5 fw-bold text-light">Empty</p>
+        </div>
+      </div>
 
       <div class="col-md-4">
         <div class="d-flex justify-content-between align-items-center">
@@ -166,7 +171,7 @@ export default {
             from: basketItem.dates.from,
             to: basketItem.dates.to,
           })),
-          
+
         });
       } catch (error) {}
       this.loading = false;
