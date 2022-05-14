@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\BookableReviewController;
 use App\Http\Controllers\Api\BookableController;
 use App\Http\Controllers\Api\BookablePriceController;
 use App\Http\Controllers\Api\BookingByReviewController;
+use App\Http\Controllers\Api\CheckoutController;
 use App\Http\Controllers\Api\ReviewController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -44,3 +45,6 @@ Route::apiResource('reviews', ReviewController::class)
     ->except([])
     ->only(['show', 'store']);
 
+
+Route::post('checkout', CheckoutController::class)
+    ->name('checkout');
