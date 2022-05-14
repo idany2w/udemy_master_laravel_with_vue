@@ -10,7 +10,13 @@
               class="form-control bg-white"
               name="first_name"
               v-model="customer.first_name"
+              :class="[
+                {
+                  'is-invalid': errorFor('customer.first_name'),
+                },
+              ]"
             />
+            <v-errors :errors="errorFor('customer.first_name')"></v-errors>
           </div>
           <div class="col-md-6">
             <label for="last_name">Last name</label>
@@ -19,7 +25,13 @@
               class="form-control bg-white"
               name="last_name"
               v-model="customer.last_name"
+              :class="[
+                {
+                  'is-invalid': errorFor('customer.last_name'),
+                },
+              ]"
             />
+            <v-errors :errors="errorFor('customer.last_name')"></v-errors>
           </div>
           <div class="col-md-12">
             <label for="email">Email</label>
@@ -28,7 +40,13 @@
               class="form-control bg-white"
               name="email"
               v-model="customer.email"
+              :class="[
+                {
+                  'is-invalid': errorFor('customer.email'),
+                },
+              ]"
             />
+            <v-errors :errors="errorFor('customer.email')"></v-errors>
           </div>
           <div class="col-md-6">
             <label for="street">Street</label>
@@ -37,7 +55,13 @@
               class="form-control bg-white"
               name="street"
               v-model="customer.street"
+              :class="[
+                {
+                  'is-invalid': errorFor('customer.street'),
+                },
+              ]"
             />
+            <v-errors :errors="errorFor('customer.street')"></v-errors>
           </div>
           <div class="col-md-6">
             <label for="city">City</label>
@@ -46,7 +70,13 @@
               class="form-control bg-white"
               name="city"
               v-model="customer.city"
+              :class="[
+                {
+                  'is-invalid': errorFor('customer.city'),
+                },
+              ]"
             />
+            <v-errors :errors="errorFor('customer.city')"></v-errors>
           </div>
           <div class="col-md-6">
             <label for="Country">Country</label>
@@ -55,7 +85,13 @@
               class="form-control bg-white"
               name="country"
               v-model="customer.country"
+              :class="[
+                {
+                  'is-invalid': errorFor('customer.country'),
+                },
+              ]"
             />
+            <v-errors :errors="errorFor('customer.country')"></v-errors>
           </div>
           <div class="col-md-4">
             <label for="state">State</label>
@@ -64,7 +100,13 @@
               class="form-control bg-white"
               name="state"
               v-model="customer.state"
+              :class="[
+                {
+                  'is-invalid': errorFor('customer.state'),
+                },
+              ]"
             />
+            <v-errors :errors="errorFor('customer.state')"></v-errors>
           </div>
           <div class="col-md-2">
             <label for="zip">Zip</label>
@@ -73,13 +115,20 @@
               class="form-control bg-white"
               name="zip"
               v-model="customer.zip"
+              :class="[
+                {
+                  'is-invalid': errorFor('customer.zip'),
+                },
+              ]"
             />
+            <v-errors :errors="errorFor('customer.zip')"></v-errors>
           </div>
           <div class="col-12"><hr /></div>
           <div class="col-12">
             <button
               class="btn btn-secondary d-block w-100"
               @click.prevent="book"
+              :disabled="loading"
             >
               Book now!
             </button>
@@ -163,6 +212,8 @@ export default {
   methods: {
     async book() {
       this.loading = true;
+      this.errors = null;
+
       try {
         await axios.post(`/api/checkout`, {
           customer: this.customer,
@@ -173,7 +224,9 @@ export default {
           })),
         });
         this.$store.dispatch("clearBasket");
-      } catch (error) {}
+      } catch (error) {
+        this.errors = error.response && error.response.data.errors;
+      }
       this.loading = false;
     },
   },
