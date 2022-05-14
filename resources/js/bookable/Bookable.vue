@@ -21,15 +21,22 @@
       ></availability>
 
       <transition name="fade">
-        <price-breakdown v-if="price" :price="price" class="mb-3"></price-breakdown>
+        <price-breakdown
+          v-if="price"
+          :price="price"
+          class="mb-3"
+        ></price-breakdown>
       </transition>
 
       <transition name="fade">
-        <button class="btn btn-outline-secondary d-block w-100" v-if="price">
+        <button
+          class="btn btn-outline-secondary d-block w-100"
+          v-if="price"
+          @click="addToBasket"
+        >
           Book now
         </button>
       </transition>
-
     </div>
   </div>
 </template>
@@ -79,6 +86,13 @@ export default {
       } catch (error) {
         this.price = null;
       }
+    },
+    addToBasket() {
+      this.$store.commit("addToBasket", {
+        bookable: this.bookable,
+        price: this.price,
+        dates: this.lastSearch,
+      });
     },
   },
 };
