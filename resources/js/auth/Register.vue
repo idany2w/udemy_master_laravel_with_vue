@@ -12,11 +12,11 @@
             v-model="user.name"
             :class="[
               {
-                'is-invalid': errorFor('user.name'),
+                'is-invalid': errorFor('name'),
               },
             ]"
           />
-          <v-errors :errors="errorFor('user.email')"></v-errors>
+          <v-errors :errors="errorFor('email')"></v-errors>
         </div>
         <div class="col-12">
           <label for="email">Email</label>
@@ -28,11 +28,11 @@
             v-model="user.email"
             :class="[
               {
-                'is-invalid': errorFor('user.email'),
+                'is-invalid': errorFor('email'),
               },
             ]"
           />
-          <v-errors :errors="errorFor('user.email')"></v-errors>
+          <v-errors :errors="errorFor('email')"></v-errors>
         </div>
         <div class="col-12">
           <label for="password">Password</label>
@@ -44,11 +44,11 @@
             v-model="user.password"
             :class="[
               {
-                'is-invalid': errorFor('user.password'),
+                'is-invalid': errorFor('password'),
               },
             ]"
           />
-          <v-errors :errors="errorFor('user.password')"></v-errors>
+          <v-errors :errors="errorFor('password')"></v-errors>
         </div>
         <div class="col-12">
           <label for="password_confirmation">Re-type Password</label>
@@ -60,11 +60,11 @@
             v-model="user.password_confirmation"
             :class="[
               {
-                'is-invalid': errorFor('user.password_confirmation'),
+                'is-invalid': errorFor('password_confirmation'),
               },
             ]"
           />
-          <v-errors :errors="errorFor('user.password_confirmation')"></v-errors>
+          <v-errors :errors="errorFor('password_confirmation')"></v-errors>
         </div>
         <div class="col-12">
           <button
@@ -117,15 +117,13 @@ export default {
       this.errors = null;
 
       try {
-        await axios.get("/sanctum/csrf-cookie");
-        await axios.post("/login", {
-          email: this.email,
-          password: this.password,
-        });
+        const response = await axios.post("/register", this.user);
 
-        logIn();
-        this.$store.dispatch("loadUser");
-        this.$router.push({ name: "home" });
+        if (201 == response.status) {
+          logIn();
+          this.$store.dispatch("loadUser");
+          this.$router.push({ name: "home" });
+        }
       } catch (error) {
         this.errors = error.response && error.response.data.errors;
       }
