@@ -9,7 +9,7 @@
 
       <router-link class="btn nav-button" :to="{ name: 'home' }">
         Basket
-        <span v-if="itemsInBakset" class="badge bg-secondary">{{ itemsInBakset }}</span>
+        <span v-if="itemsInBasket" class="badge bg-secondary">{{ itemsInBasket }}</span>
       </router-link>
     </nav>
 
@@ -33,7 +33,7 @@ export default {
       lastSearchComputed: "lastSearch",
     }),
     ...mapGetters({
-      itemsInBakset: "itemsInBakset",
+      itemsInBasket: "itemsInBasket",
     }),
     somthingElse() {
       return "foo";
