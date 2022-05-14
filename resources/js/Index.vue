@@ -7,7 +7,7 @@
         >LaravelBnb</router-link
       >
 
-      <router-link class="btn nav-button" :to="{ name: 'home' }">
+      <router-link class="btn nav-button" :to="{ name: 'basket' }">
         Basket
         <span v-if="itemsInBasket" class="badge bg-secondary">{{ itemsInBasket }}</span>
       </router-link>
