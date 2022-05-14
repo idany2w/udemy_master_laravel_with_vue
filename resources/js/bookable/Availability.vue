@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p class="h6 text-uppercase text-secondary font-weight-bolder">
+    <p class="h6 text-uppercase text-secondary fw-bold">
       Check Availability
       <transition name="fade">
         <span v-if="noAvailability" class="text-danger">(Not available)</span>

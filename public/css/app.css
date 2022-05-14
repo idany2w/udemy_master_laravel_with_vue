@@ -19657,7 +19657,7 @@ textarea.form-control-lg {
   }
 }
 .fade-enter-active, .fade-leave-active {
-  transition: opacity 0.5s;
+  transition: opacity 0.25s;
 }
 
 .fade-enter, .fade-leave-to {
@@ -19665,7 +19665,7 @@ textarea.form-control-lg {
 }
 
 .v-enter-active, .v-leave-active {
-  transition: opacity 4s;
+  transition: opacity 0.25s;
 }
 
 .v-enter, .v-leave-to {
